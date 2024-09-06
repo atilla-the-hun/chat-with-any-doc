@@ -103,13 +103,25 @@ def process_file(file_content, file_name, api_key, selected_model):
             os.unlink(temp_file_path)
 
 # Streamlit app
-col1, col2 = st.columns([1, 4])
+col1, col2 = st.columns([1, 12])
 with col1:
-    st.image("brain_boost_2.png", width=100)
+    st.image("brain_boost_2.png", width=50)
 with col2:
-    st.title("Brain Boost")
+    st.markdown(
+        """
+        <a href="https://brain-boost-ai-experts.vercel.app" style="text-decoration: none; color: inherit;">
+            <h1 style="margin-top: -24px;">Brain Boost</h1>
+        </a>
+        <a href="https://brain-boost-ai-experts.vercel.app" style="text-decoration: none; color: inherit;">
+            <p style="font-size: 14px; margin: 5px 0;">Click here to visit Brain Boost for AI solutions</p>
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
 
 st.subheader("Chat with AI (and optionally your document)")
+
+
 
 # Sidebar for configurations
 st.sidebar.header("Configuration")
