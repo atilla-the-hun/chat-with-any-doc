@@ -1,0 +1,10 @@
+streamlit
+langchain==0.2.14
+langchain-openai==0.1.21
+langchain-community==0.2.12
+openai==1.40.6
+python-docx
+openpyxl
+faiss-cpu
+tiktoken
+pypdf
