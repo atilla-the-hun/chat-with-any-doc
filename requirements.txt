@@ -8,3 +8,4 @@ openpyxl
 faiss-cpu
 tiktoken
 pypdf
+unstructured
