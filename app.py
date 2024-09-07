@@ -120,7 +120,6 @@ with col2:
         """,
         unsafe_allow_html=True
     )
-
 st.markdown('<div style="margin-top: 20px;"></div>', unsafe_allow_html=True)
 st.subheader("Chat with AI (and optionally your document)")
 
