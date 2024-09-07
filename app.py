@@ -113,12 +113,13 @@ with col2:
             <h1 style="margin-top: -24px;">Brain Boost</h1>
         </a>
         <a href="https://brain-boost-ai-experts.vercel.app" style="text-decoration: none; color: inherit;">
-            <p style="font-size: 14px; margin: 5px 0;">Click here to visit Brain Boost for AI solutions</p>
+            <p style="font-size: 14px; margin: -20px 2px;">Click here to visit Brain Boost for AI solutions</p>
         </a>
         """,
         unsafe_allow_html=True
     )
 
+st.markdown('<div style="margin-top: 20px;"></div>', unsafe_allow_html=True)
 st.subheader("Chat with AI (and optionally your document)")
 
 
@@ -196,4 +197,13 @@ if api_key:
 
     st.info("You can start chatting now. If you want to chat about a specific document, upload it using the file uploader in the sidebar.")
 else:
-    st.warning("Please enter your OpenAI API key in the sidebar to start using the app.")
+    st.markdown(
+        """
+        <div style="margin: 20px 0;">
+            <div style="background-color: #FFFBE6; border-left: 5px solid #FFA500; padding: 10px; border-radius: 5px;">
+                Please enter your OpenAI API key in the sidebar to start using the app.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
