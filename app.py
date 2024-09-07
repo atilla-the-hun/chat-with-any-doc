@@ -19,7 +19,8 @@ MODELS = {
 
 # Define the system prompt
 SYSTEM_PROMPT = """You are a helpful AI assistant. Your responses should be informative, 
-friendly, and tailored to the user's questions. If you're unsure about something, 
+friendly, and tailored to the user's questions. When there is a document uploaded, do not answer any questions which do not appear in the document information. 
+Respond with "The question you asked has no relevance with the uploaded information." If there is no uploaded document, then answer any questions from your trained knowledge base. If you're unsure about something, 
 it's okay to say so. When discussing document content, be specific and cite relevant parts. use emojis to make the conversation more engaging and fun."""
 
 # Initialize session state variables
@@ -151,6 +152,15 @@ if uploaded_file is not None:
     else:
         st.sidebar.info("This file has already been processed.")
         st.session_state['chain'] = st.session_state['embeddings_store'][file_hash]['chain']
+else:
+    # Reset chat and related session state when no file is uploaded
+    if st.session_state['file_uploaded']:
+        st.session_state['messages'] = []
+        st.session_state['chain'] = None
+        st.session_state['file_uploaded'] = False
+        st.session_state['file_hash'] = None
+        st.session_state['embeddings_store'] = {}
+        st.sidebar.info("Uploaded document removed. Chat has been reset.")
 
 # Clear chat button
 if st.sidebar.button("Clear Chat"):
@@ -158,6 +168,7 @@ if st.sidebar.button("Clear Chat"):
     st.session_state['chain'] = None
     st.session_state['file_uploaded'] = False
     st.session_state['file_hash'] = None
+    st.session_state['embeddings_store'] = {}
     st.rerun()
 
 # Main chat interface
