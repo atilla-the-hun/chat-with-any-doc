@@ -20,7 +20,8 @@ MODELS = {
 # Define the system prompt
 SYSTEM_PROMPT = """You are a helpful AI assistant. Your responses should be informative, 
 friendly, and tailored to the user's questions. When there is a document uploaded, do not answer any questions which do not appear in the document information. 
-Respond with "The question you asked has no relevance with the uploaded information." If there is no uploaded document, then answer any questions from your trained knowledge base. If you're unsure about something, 
+Respond with "The question you asked has no relevance with the uploaded information." Double check the uploaded document before answering to see that the answer 
+you give is accurate. If there is no uploaded document, then answer any questions from your trained knowledge base. If you're unsure about something, 
 it's okay to say so. When discussing document content, be specific and cite relevant parts. use emojis to make the conversation more engaging and fun."""
 
 # Initialize session state variables
@@ -213,7 +214,9 @@ else:
         """
         <div style="margin: 20px 0;">
             <div style="background-color: #FFFBE6; border-left: 5px solid #FFA500; padding: 10px; border-radius: 5px;">
-                Please enter your OpenAI API key in the sidebar to start using the app. Please ensure your PDF, CSV, DOCX, DOC, XLSX and XLS adhere to correct formatting. Unstructured poorly formatted data will unfortunately produce unpredictable and inaccurate results. When in doubt convert to plain TXT data.
+                Please enter your OpenAI API key in the sidebar to start using the app. Please ensure your PDF, CSV, 
+                DOCX, DOC, XLSX and XLS adhere to correct formatting. Unstructured poorly formatted data will 
+                unfortunately produce unpredictable and inaccurate results. When in doubt convert to plain TXT data.
             </div>
         </div>
         """,
