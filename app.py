@@ -31,6 +31,8 @@ if 'embeddings_store' not in st.session_state:
     st.session_state['embeddings_store'] = {}
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
+if 'chain' not in st.session_state:
+    st.session_state['chain'] = None
 
 def get_file_hash(file_content):
     return hashlib.md5(file_content).hexdigest()
@@ -122,8 +124,6 @@ with col2:
 st.markdown('<div style="margin-top: 20px;"></div>', unsafe_allow_html=True)
 st.subheader("Chat with AI (and optionally your document)")
 
-
-
 # Sidebar for configurations
 st.sidebar.header("Configuration")
 
@@ -179,16 +179,18 @@ if api_key:
             message_placeholder = st.empty()
             with st.spinner("🤔 AI is thinking..."):
                 try:
+                    chat = ChatOpenAI(temperature=0, model_name=MODELS[selected_model], openai_api_key=api_key)
+                    
                     if st.session_state['chain']:
                         response = st.session_state['chain']({"question": prompt})
                         answer = response['answer']
                     else:
-                        chat = ChatOpenAI(temperature=0, model_name=MODELS[selected_model], openai_api_key=api_key)
                         messages = [
                             {"role": "system", "content": SYSTEM_PROMPT},
                             {"role": "user", "content": prompt}
                         ]
-                        answer = chat.invoke(messages).content
+                        response = chat.invoke(messages)
+                        answer = response.content
                     
                     message_placeholder.markdown(answer)
                     st.session_state['messages'].append({"role": "assistant", "content": answer})
