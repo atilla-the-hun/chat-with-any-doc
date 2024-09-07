@@ -213,7 +213,7 @@ else:
         """
         <div style="margin: 20px 0;">
             <div style="background-color: #FFFBE6; border-left: 5px solid #FFA500; padding: 10px; border-radius: 5px;">
-                Please enter your OpenAI API key in the sidebar to start using the app.
+                Please enter your OpenAI API key in the sidebar to start using the app. Please ensure your PDF, CSV, DOCX, DOC, XLSX and XLS adhere to correct formatting. Unstructured poorly formatted data will unfortunately produce unpredictable and inaccurate results. When in doubt convert to plain TXT data.
             </div>
         </div>
         """,
